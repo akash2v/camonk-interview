@@ -1,4 +1,3 @@
-// src/components/BlogDetail.tsx
 import { useBlog } from "../hooks/useBlogs"
 
 export function BlogDetail({ blogId }: { blogId: number }) {

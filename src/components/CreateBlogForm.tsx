@@ -17,15 +17,14 @@ const CreateBlogForm: React.FC = () => {
     e.preventDefault()
 
     mutate({
-      title: title,
-      description: description,
-      content: content,
-      coverImage: coverImage,
+      title,
+      description,
+      content,
+      coverImage,
       category: category.split(","),
       date: new Date().toISOString(),
     })
 
-    // reset form
     setTitle("")
     setDescription("")
     setContent("")
@@ -34,45 +33,84 @@ const CreateBlogForm: React.FC = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <h2 className="text-lg font-semibold">Create Blog</h2>
+    <div className="max-w-xl mx-auto bg-white border rounded-lg p-6 shadow-sm">
+      <form onSubmit={handleSubmit} className="space-y-5">
+        <h2 className="text-xl font-semibold text-center">
+          Create New Blog
+        </h2>
 
-      <Input
-        placeholder="Blog Title"
-        value={title}
-        onChange={(e:any) => setTitle(e.target.value)}
-        required
-      />
+        {/* Title */}
+        <div className="space-y-1">
+          <label className="text-sm font-medium">Title</label>
+          <Input
+            placeholder="Enter blog title"
+            value={title}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setTitle(e.target.value)
+            }
+            required
+          />
+        </div>
 
-      <Input
-        placeholder="Category (comma separated)"
-        value={category}
-        onChange={(e:any) => setCategory(e.target.value)}
-      />
+        {/* Category */}
+        <div className="space-y-1">
+          <label className="text-sm font-medium">Category</label>
+          <Input
+            placeholder="Tech, Finance"
+            value={category}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setCategory(e.target.value)
+            }
+          />
+        </div>
 
-      <Input
-        placeholder="Cover Image URL"
-        value={coverImage}
-        onChange={(e:any) => setCoverImage(e.target.value)}
-      />
+        {/* Cover Image */}
+        <div className="space-y-1">
+          <label className="text-sm font-medium">Cover Image URL</label>
+          <Input
+            placeholder="https://image-url.com"
+            value={coverImage}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setCoverImage(e.target.value)
+            }
+          />
+        </div>
 
-      <Textarea
-        placeholder="Short Description"
-        value={description}
-        onChange={(e:any) => setDescription(e.target.value)}
-      />
+        {/* Description */}
+        <div className="space-y-1">
+          <label className="text-sm font-medium">Description</label>
+          <Textarea
+            placeholder="Short description of the blog"
+            value={description}
+            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+              setDescription(e.target.value)
+            }
+            rows={3}
+          />
+        </div>
 
-      <Textarea
-        placeholder="Blog Content"
-        value={content}
-        onChange={(e:any) => setContent(e.target.value)}
-        rows={5}
-      />
+        {/* Content */}
+        <div className="space-y-1">
+          <label className="text-sm font-medium">Content</label>
+          <Textarea
+            placeholder="Write your blog content here..."
+            value={content}
+            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+              setContent(e.target.value)
+            }
+            rows={6}
+          />
+        </div>
 
-      <Button type="submit" disabled={isPending}>
-        {isPending ? "Creating..." : "Create Blog"}
-      </Button>
-    </form>
+        <Button
+          type="submit"
+          disabled={isPending}
+          className="w-full"
+        >
+          {isPending ? "Creating..." : "Create Blog"}
+        </Button>
+      </form>
+    </div>
   )
 }
 
