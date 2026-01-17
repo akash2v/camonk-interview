@@ -2,6 +2,8 @@
 
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/d5c73896-9c9d-45af-ac67-57f9f48cb3ea" />
 
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/ec73ac3f-c591-4b4a-8357-8374a6600064" />
+
 Welcome to the CA Monk Blog Application assignment! This project tests your ability to build a modern React application with state management, styling, and component libraries.
 
 ## Installation
